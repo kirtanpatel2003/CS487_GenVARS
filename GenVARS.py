@@ -1,3 +1,19 @@
+'''
+Automated Vulnerability Exploitation Framework
+===============================================
+This Python-based framework automates the process of vulnerability detection, analysis, 
+and exploitation in a controlled environment. It leverages SSH and Telnet for system interaction, 
+and AI (OpenAI GPT-3.5 Turbo) for advanced analysis and actionable recommendations.
+
+Features:
+- Generates a comprehensive vulnerability report.
+- Extracts critical data, such as SUID binaries.
+- Uses AI to analyze vulnerabilities and provide detailed exploitation steps.
+- Automates Telnet-based exploitation for Metasploitable systems.
+
+Authors: Kirtan Patel and Dev Shah
+'''
+
 import paramiko
 from transformers import pipeline
 import openai
