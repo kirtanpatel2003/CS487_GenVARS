@@ -65,6 +65,12 @@ db.sqlite3-journal
 instance/
 .webassets-cache
 
+# Ignore report files
+vulnerability_report.txt
+small_report.txt
+ai_output.txt
+
+
 # Scrapy stuff:
 .scrapy
 

